@@ -1,38 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Custom New Tab URL Chrome Extension
+
+This Chrome extension allows you to customize the new tab URL to your desired website. The extension is built using Next.js
+
+## Features
+- Set a custom URL for the new tab page.
+- Automatically update the new tab URL based on your preference.
+- View the current setting of the new tab URL.
 
 ## Getting Started
+Follow the steps below to set up and use the extension:
 
-First, run the development server:
-
+1. Install Dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Build the Extension:
+```bash
+npm run build:extension
+``` 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Install the Extension in Chrome:
+- Open Chrome and go to the Extensions page (`chrome://extensions/`).
+- Enable Developer mode by toggling the switch in the top right corner.
+- Click on "Load unpacked" and select the `out` directory that was created after running the build command.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+4. Set your Custom URL:
+- Click on the extension icon in your Chrome browser to open the popup window.
+- Enter your desired URL in the input field labeled "Insert URL."
+- Click the "save" button to save the custom URL.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+5. Enjoy your Custom New Tab Page:
+- Now, whenever you open a new tab, it will load the URL you specified.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## How it Works
+The extension consists of two main files:
 
-## Learn More
+### `background.js`
+This script runs in the background and handles the functionality of setting and updating the custom new tab URL.
 
-To learn more about Next.js, take a look at the following resources:
+### `extension.tsx`
+This TypeScript file contains the user interface for the extension. It allows users to enter their desired URL for the new tab page and save the setting.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Disclaimer
+Please note that this extension assumes some basic familiarity with Chrome extension development and Next.js. If you are new to these technologies, consider referring to their official documentation for more detailed information.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Important:** Make sure to review the code and verify its safety before installing any extension from unofficial sources.
