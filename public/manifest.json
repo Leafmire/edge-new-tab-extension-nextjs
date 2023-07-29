@@ -1,0 +1,15 @@
+{
+	"manifest_version": 3,
+	"name": "Edge-NewTab-Homepage",
+	"version": "1.0",
+  
+	"action": {
+		"default_popup": "extension.html"
+	},
+	"background": {
+	  "service_worker": "background.js"
+	},
+	"permissions": [ "storage", "tabs", "activeTab" ],
+	"description": "This is a simple Chrome extension that allows you to customize the new tab URL to your desired website.",
+	"icons": {}
+  }
