@@ -1,6 +1,6 @@
 # Custom New Tab URL Chrome Extension
 
-This Chrome extension allows you to customize the new tab URL to your desired website. The extension is built using Next.js and can be easily built using the "build:extension" script specified in the `package.json` file.
+This Chrome extension allows you to customize the new tab URL to your desired website. The extension is built using Next.js
 
 ## Features
 - Set a custom URL for the new tab page.
