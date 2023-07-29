@@ -7,9 +7,14 @@
 		"default_popup": "extension.html"
 	},
 	"background": {
-	  "service_worker": "background.js"
+	  "service_worker": "background.js",
+	  "default_icon": "128x128.png"
 	},
 	"permissions": [ "storage", "tabs", "activeTab" ],
 	"description": "This is a simple Chrome extension that allows you to customize the new tab URL to your desired website.",
-	"icons": {}
+	"icons": {
+		"16": "16x16.png",
+		"48": "48x48.png",
+		"128": "128x128.png"
+	}
   }
