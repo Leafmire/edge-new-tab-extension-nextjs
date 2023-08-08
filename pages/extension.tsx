@@ -13,7 +13,7 @@ export default function Extension() {
 	}, [setCurrentUrl]);
 	
 	function startsWithHttp(url: string) {
-		const pattern = /^https?:\/\//;
+		const pattern = /^[a-zA-Z]+:\/\//;
 		return pattern.test(url);
 	}
 
