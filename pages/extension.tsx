@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import currentUrlState from '@/recoil/urlStates';
+import { useRecoilState } from 'recoil';
 
 export default function Extension() {
 	const [url, setUrl] = useState<string>('');
+	const [currentUrl, setCurrentUrl] = useRecoilState(currentUrlState);
+
+	useEffect(() => {
+		chrome.storage.sync.get(['new_tab_url'], function (result) {
+			setCurrentUrl(result.new_tab_url);
+		});
+	}, [setCurrentUrl]);
+	
+	function startsWithHttp(url: string) {
+		const pattern = /^https?:\/\//;
+		return pattern.test(url);
+	}
 
 	const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-		chrome.storage.sync.set({ new_tab_url: url }).then(() => {
-			console.log('Value is set to ' + url);
+		let changedUrl = url.trim();
+		if (!startsWithHttp(url)) {
+			changedUrl = 'https://' + url;
+			setUrl(changedUrl);
+		}
+		chrome.storage.sync.set({ new_tab_url: changedUrl }).then(() => {
+			console.log('Value is set to ' + changedUrl);
 		});
 	}
 
@@ -27,7 +46,7 @@ export default function Extension() {
 						placeholder="https://www.google.com/"
 					/>
 					<p className="mt-2">
-						<span className="text-sm text-gray-500">Current setting: {url}</span>
+						<span className="text-sm text-gray-500">Current setting: {currentUrl}</span>
 					</p>
 				</div>
 				<div className="popup-footer mt-4">
